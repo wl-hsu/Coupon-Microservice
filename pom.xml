@@ -10,6 +10,7 @@
     <modules>
         <module>coupon-eureka</module>
         <module>coupon-gateway</module>
+        <module>coupon-service</module>
     </modules>
 
     <!-- The packaging type of the project, that is, the release form of the project, defaults to jar.
