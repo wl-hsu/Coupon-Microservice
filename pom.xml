@@ -7,6 +7,9 @@
     <groupId>wlh.coupon</groupId>
     <artifactId>Coupon-Microservice</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>coupon-eureka</module>
+    </modules>
 
     <!-- The packaging type of the project, that is, the release form of the project, defaults to jar.
     For the parent module of the aggregate project, it must be specified as pom -->
