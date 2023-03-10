@@ -9,8 +9,10 @@ import java.util.stream.Stream;
 /**
  * product line enumeration
  * For example: in amazon website, they have general amazon seller and Whole Foods Market.
+ * Or like uber have uber and ubereats
  * This enumeration class is use to distinguish different product line.
  * It can help to implement that specific coupon can only be used in specific product line.
+ * For free to modify the product line
  */
 @Getter
 @AllArgsConstructor

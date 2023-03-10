@@ -13,6 +13,14 @@ import java.util.stream.Stream;
 @AllArgsConstructor
 public enum CouponCategory {
 
+    /**
+     * DTOC  Dollars-Off-Total-Order Coupons
+     * It is something like if you purchase 100 prices, this coupon can give you 5 dollars off
+     * PTC Percentages-off Coupon
+     * It is the simple Percentages-off coupon
+     * DC Dollars-off Coupon
+     * It is simple dollars off coupon
+     */
     DTOC("Dollars-Off-Total-Order Coupons", "001"),
     PTC("Percentages-off Coupon", "002"),
     DC("Dollars-off Coupon", "003");
