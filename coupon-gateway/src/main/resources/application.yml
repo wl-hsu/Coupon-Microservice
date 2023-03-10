@@ -11,7 +11,7 @@ eureka:
       defaultZone: http://server1:8000/eureka/
 
 zuul:
-  prefix: /imooc
+  prefix: /coupon-microservice
   routes:
     # Coupon template microservice routing configuration definition
     template:
