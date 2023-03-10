@@ -1,5 +1,6 @@
 package wlh.coupon.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import wlh.coupon.constant.CouponCategory;
 import wlh.coupon.constant.DistributeTarget;
 import wlh.coupon.constant.ProductLine;
 import wlh.coupon.converter.CouponCategoryConverter;
+import wlh.coupon.serialization.CouponTemplateSerialize;
 import wlh.coupon.vo.TemplateRule;
 
 import javax.persistence.*;
@@ -25,6 +27,7 @@ import java.util.Date;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name= "coupon_template")
+@JsonSerialize(using = CouponTemplateSerialize.class)
 public class CouponTemplate {
 
     /** self increase primary key */
@@ -56,10 +59,12 @@ public class CouponTemplate {
 
     /** coupon category */
     @Column(name = "category", nullable = false)
+    @Convert(converter = CouponCategoryConverter.class)
     private CouponCategory category;
 
     /** product line */
     @Column(name = "product_line", nullable = false)
+    @Convert(converter = CouponCategoryConverter.class)
     private ProductLine productLine;
 
     /** total count */
@@ -81,10 +86,12 @@ public class CouponTemplate {
 
     /** distributed target */
     @Column(name = "target", nullable = false)
+    @Convert(converter = CouponCategoryConverter.class)
     private DistributeTarget target;
 
     /** template rule */
     @Column(name = "rule", nullable = false)
+    @Convert(converter = CouponCategoryConverter.class)
     private TemplateRule rule;
 
     /**
