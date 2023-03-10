@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Periodically clear expired coupon templates
+ * Periodically clean expired coupon templates
  */
 @Slf4j
 @Component
