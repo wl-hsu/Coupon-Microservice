@@ -16,7 +16,7 @@ spring:
     open-in-view: false
   datasource:
     # data source
-    url: jdbc:mysql://127.0.0.1:3306/imooc_coupon_data?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/coupon_data?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: root
     type: com.zaxxer.hikari.HikariDataSource
@@ -29,7 +29,7 @@ spring:
       connection-timeout: 30000
       max-lifetime: 45000
       auto-commit: true
-      pool-name: ImoocCouponHikariCP
+      pool-name: CouponHikariCP
   redis:
     database: 0
     host: 127.0.0.1
@@ -52,8 +52,8 @@ management:
 
 info:
   app:
-    name: imooc-coupon-template
-    groupId: imooc-coupon-service
+    name: coupon-template
+    groupId: coupon-service
     artifactId: coupon-template
     version: 1.0-SNAPSHOT
 
@@ -61,4 +61,4 @@ info:
 
 logging:
   level:
-    com.imooc.coupon: debug
+    wlh.coupon: debug
