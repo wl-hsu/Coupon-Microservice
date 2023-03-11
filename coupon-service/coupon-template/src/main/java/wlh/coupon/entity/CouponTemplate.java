@@ -10,10 +10,20 @@ import wlh.coupon.constant.CouponCategory;
 import wlh.coupon.constant.DistributeTarget;
 import wlh.coupon.constant.ProductLine;
 import wlh.coupon.converter.CouponCategoryConverter;
+import wlh.coupon.converter.DistributeTargetConverter;
+import wlh.coupon.converter.ProductLineConverter;
+import wlh.coupon.converter.RuleConverter;
 import wlh.coupon.serialization.CouponTemplateSerialize;
 import wlh.coupon.vo.TemplateRule;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -34,7 +44,6 @@ public class CouponTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    @Transient
     private Integer id;
 
     /** available */
@@ -64,7 +73,7 @@ public class CouponTemplate {
 
     /** product line */
     @Column(name = "product_line", nullable = false)
-    @Convert(converter = CouponCategoryConverter.class)
+    @Convert(converter = ProductLineConverter.class)
     private ProductLine productLine;
 
     /** total count */
@@ -86,12 +95,12 @@ public class CouponTemplate {
 
     /** distributed target */
     @Column(name = "target", nullable = false)
-    @Convert(converter = CouponCategoryConverter.class)
+    @Convert(converter = DistributeTargetConverter.class)
     private DistributeTarget target;
 
     /** template rule */
     @Column(name = "rule", nullable = false)
-    @Convert(converter = CouponCategoryConverter.class)
+    @Convert(converter = RuleConverter.class)
     private TemplateRule rule;
 
     /**
