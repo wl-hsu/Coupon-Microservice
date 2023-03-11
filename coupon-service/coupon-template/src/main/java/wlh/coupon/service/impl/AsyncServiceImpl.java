@@ -53,7 +53,7 @@ public class AsyncServiceImpl implements IAsyncService {
 
         Set<String> couponCodes = buildCouponCode(template);
 
-        // imooc_coupon_template_code_1
+        // coupon_template_code_1
         String redisKey = String.format("%s%s",
                 Constant.RedisPrefix.COUPON_TEMPLATE, template.getId().toString());
         log.info("Push CouponCode To Redis: {}",
@@ -66,7 +66,6 @@ public class AsyncServiceImpl implements IAsyncService {
         log.info("Construct CouponCode By Template Cost: {}ms",
                 watch.elapsed(TimeUnit.MILLISECONDS));
 
-        // TODO 发送短信或者邮件通知优惠券模板已经可用
         log.info("CouponTemplate({}) Is Available!", template.getId());
     }
 
