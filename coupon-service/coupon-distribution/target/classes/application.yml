@@ -1,0 +1,73 @@
+server:
+  port: 7002
+  servlet:
+    context-path: /coupon-distribution
+
+spring:
+  application:
+    name: eureka-client-coupon-distribution
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.show_sql: true
+      hibernate.format_sql: true
+    open-in-view: false
+  datasource:
+    # data source
+    url: jdbc:mysql://127.0.0.1:3306/coupon_data?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    # connection pool
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 4
+      idle-timeout: 30000
+      connection-timeout: 30000
+      max-lifetime: 45000
+      auto-commit: true
+      pool-name: CouponHikariCP
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    # password:
+    # connection timeout
+    timeout: 10000
+  kafka:
+    bootstrap-servers:
+      - 127.0.0.1:9092
+    consumer:
+      group-id: coupon-x
+      auto-offset-reset: latest
+  # Enable the ribbon retry mechanism, that is,
+  # whether to retry from another node if the service fails to be obtained
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://server1:8000/eureka/
+
+logging:
+  level:
+    wlh.coupon: debug
+
+# feign configuration
+feign:
+  hystrix:
+    enabled: true   # Hystrix
+  client:
+    config:
+      default:  # Global
+        connectTimeout: 2000  # The default connection timeout is 10s
+        readTimeout: 5000
+      eureka-client-coupon-template:
+        connectTimeout: 3000  # The default connection timeout is 10s
+        readTimeout: 5000
