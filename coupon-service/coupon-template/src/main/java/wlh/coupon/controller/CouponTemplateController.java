@@ -50,6 +50,8 @@ public class CouponTemplateController {
     /**
      * Construct Coupon Template Details
      * 127.0.0.1:7001/coupon-template/template/info?id=1
+     * 127.0.0.1:9000/coupon-microservice/coupon-template/template/info?id=x
+     * 127.0.0.1:9000/coupon-microservice/coupon-template/template/info?id=1
      * */
     @GetMapping("/template/info")
     public CouponTemplate buildTemplateInfo(@RequestParam("id") Integer id)
@@ -61,6 +63,7 @@ public class CouponTemplateController {
     /**
      * Find all available coupon templates
      * 127.0.0.1:7001/coupon-template/template/sdk/all
+     * 127.0.0.1:9000/coupon-microservice/coupon-template/template/sdk/all
      * */
     @GetMapping("/template/sdk/all")
     public List<CouponTemplateSDK> findAllUsableTemplate() {
@@ -70,7 +73,9 @@ public class CouponTemplateController {
 
     /**
      * Get the mapping from template ids to CouponTemplateSDK
-     * 127.0.0.1:7001/coupon-template/template/sdk/infos
+     * 127.0.0.1:7001/coupon-template/template/sdk/infos?ids=1,2
+     * 127.0.0.1:9000/coupon-microservice/coupon-template/template/sdk/infos?ids=x,y
+     * 127.0.0.1:9000/coupon-microservice/coupon-template/template/sdk/infos?ids=1,2
      * */
     @GetMapping("/template/sdk/infos")
     public Map<Integer, CouponTemplateSDK> findIds2TemplateSDK(
