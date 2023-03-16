@@ -24,6 +24,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -38,7 +39,7 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name= "coupon_template")
 @JsonSerialize(using = CouponTemplateSerialize.class)
-public class CouponTemplate {
+public class CouponTemplate implements Serializable {
 
     /** self increase primary key */
     @Id

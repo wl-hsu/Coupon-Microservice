@@ -28,7 +28,7 @@ public class SettlementController {
     /**
      * <h2>Coupon Settlement</h2>
      * 127.0.0.1:7003/coupon-settlement/settlement/compute
-     * 127.0.0.1:9000/coupon-settlement/settlement/compute
+     * 127.0.0.1:9000/micro-service/coupon-settlement/settlement/compute
      * */
     @PostMapping("/settlement/compute")
     public SettlementInfo computeRule(@RequestBody SettlementInfo settlement)

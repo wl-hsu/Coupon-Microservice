@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
  * Verify the Token passed in the request
  */
 @Slf4j
-@Component
+//@Component
 public class TokenFilter extends AbstractPreZuulFilter {
 
     @Override

@@ -20,3 +20,6 @@ eureka:
     # both query service and registration service need to rely on this address.
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: false
+#    renewal-percent-threshold: 0.45

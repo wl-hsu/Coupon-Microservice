@@ -36,6 +36,7 @@ public class HealthCheck {
     /**
      * health check api
      * 127.0.0.1:7001/coupon-template/health
+     * 127.0.0.1:9000/coupon-microservice/coupon-template/health
      * */
     @GetMapping("/health")
     public String health() {
@@ -46,6 +47,7 @@ public class HealthCheck {
     /**
      * Exception Test api
      * 127.0.0.1:7001/coupon-template/exception
+     * 127.0.0.1:9000/coupon-microservice/coupon-template/exception
      * */
     @GetMapping("/exception")
     public String exception() throws CouponException {
@@ -57,6 +59,7 @@ public class HealthCheck {
     /**
      * Get microservice meta information on Eureka Server
      * 127.0.0.1:7001/coupon-template/info
+     * 127.0.0.1:9000/coupon-microservice/coupon-template/info
      * */
     @GetMapping("/info")
     public List<Map<String, Object>> info() {

@@ -116,7 +116,7 @@ public class DTOCPTCExecutor extends AbstractExecutor
         List<SettlementInfo.CouponAndTemplateInfo> ctInfos = new ArrayList<>();
         double DTOCBase = (double) DTOC.getTemplate().getRule()
                 .getDiscount().getBase();
-        double DTOCQuota = (double) PTC.getTemplate().getRule()
+        double DTOCQuota = (double) DTOC.getTemplate().getRule()
                 .getDiscount().getQuota();
 
         // final price
