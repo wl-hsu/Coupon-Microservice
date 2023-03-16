@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>coupon-service</artifactId>
+        <groupId>wlh.coupon</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>coupon-settlement</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <dependencies>
+        <!-- Web  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--
+            Eureka client, when the client registers with Eureka Server,
+            it will provide a series of metadata information, such as: host, port, health check url, etc.
+            Eureka Server accepts the heartbeat information sent by each client.
+            If the heartbeat information is not received within a configured timeout period,
+            the instance will be removed from the registration list.
+        -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <!-- common module -->
+        <dependency>
+            <groupId>wlh.coupon</groupId>
+            <artifactId>coupon-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- apache tools -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.9</version>
+        </dependency>
+    </dependencies>
+
+    <!--
+        The Maven plug-in of SpringBoot can provide SpringBoot support for applications in the form of Maven.
+        It can package the SpringBoot application as an executable jar or war file,
+        and then run the SpringBoot application in the usual way.
+     -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.4.RELEASE</version>
+            </plugin>
+        </plugins>
+    </build>
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+</project>
