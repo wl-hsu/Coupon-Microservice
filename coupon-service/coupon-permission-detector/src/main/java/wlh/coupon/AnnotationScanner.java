@@ -75,7 +75,7 @@ public class AnnotationScanner {
                 CouponPermission.class
         );
         if (null == couponPermission) {
-            // 如果没有 CouponPermission 且没有 IgnorePermission, 在日志中记录
+            // if there is no CouponPermission and no IgnorePermission, record it
             log.error("lack @CouponPermission -> {}#{}",
                     javaMethod.getDeclaringClass().getName(),
                     javaMethod.getName());

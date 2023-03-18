@@ -11,15 +11,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * <h1>规则执行器抽象类, 定义通用方法</h1>
+ * Rule executor abstract class, defining common methods
  */
 public abstract class AbstractExecutor {
 
     /**
-     * <h2>校验商品类型与优惠券是否匹配</h2>
-     * 需要注意:
-     * 1. 这里实现的单品类优惠券的校验, 多品类优惠券重载此方法
-     * 2. 商品只需要有一个优惠券要求的商品类型去匹配就可以
+     * Check whether the product type matches the coupon
+     * 1.The verification of single-category coupons is implemented here,
+     *      and this method is overloaded for multi-category coupons
+     * 2. The product only needs to have a product type required by the coupon to match
      * */
     @SuppressWarnings("all")
     protected boolean isGoodsTypeSatisfy(SettlementInfo settlement) {
@@ -33,17 +33,16 @@ public abstract class AbstractExecutor {
                 List.class
         );
 
-        // 存在交集即可
         return CollectionUtils.isNotEmpty(
                 CollectionUtils.intersection(goodsType, templateGoodsType)
         );
     }
 
     /**
-     * <h2>处理商品类型与优惠券限制不匹配的情况</h2>
-     * @param settlement {@link SettlementInfo} 用户传递的结算信息
-     * @param goodsSum 商品总价
-     * @return {@link SettlementInfo} 已经修改过的结算信息
+     * Handle case where item type doesn't match coupon limit
+     * @param settlement {@link SettlementInfo} Billing information passed by the user
+     * @param goodsSum Total price
+     * @return {@link SettlementInfo} Billing information that has been revised
      * */
     protected SettlementInfo processGoodsTypeNotSatisfy(
             SettlementInfo settlement, double goodsSum
@@ -51,7 +50,7 @@ public abstract class AbstractExecutor {
 
         boolean isGoodsTypeSatisfy = isGoodsTypeSatisfy(settlement);
 
-        // 当商品类型不满足时, 直接返回总价, 并清空优惠券
+        // When the product type is not satisfied, directly return the total price and clear the coupon
         if (!isGoodsTypeSatisfy) {
             settlement.setCost(goodsSum);
             settlement.setCouponAndTemplateInfos(Collections.emptyList());
@@ -62,7 +61,7 @@ public abstract class AbstractExecutor {
     }
 
     /**
-     * <h2>商品总价</h2>
+     * Total price
      * */
     protected double goodsCostSum(List<GoodsInfo> goodsInfos) {
 
@@ -72,7 +71,7 @@ public abstract class AbstractExecutor {
     }
 
     /**
-     * <h2>保留两位小数</h2>
+     * two decimal places
      * */
     protected double retain2Decimals(double value) {
 
@@ -82,7 +81,7 @@ public abstract class AbstractExecutor {
     }
 
     /**
-     * <h2>最小支付费用</h2>
+     * minimum payment fee
      * */
     protected double minCost() {
 
