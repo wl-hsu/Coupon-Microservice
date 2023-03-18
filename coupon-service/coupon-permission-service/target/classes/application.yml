@@ -1,22 +1,20 @@
 server:
-  port: 7001
+  port: 7004
   servlet:
-    context-path: /coupon-template
+    context-path: /coupon-permission
 
 spring:
   application:
-    name: eureka-client-coupon-template
+    name: eureka-client-coupon-permission
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: none
     properties:
-      hibernate.show_sql: true
       hibernate.format_sql: true
     open-in-view: false
-    database-platform: org.hibernate.dialect.MySQLDialect
   datasource:
-    # data source
+    # db source
     url: jdbc:mysql://localhost:3306/coupon_data?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: root
@@ -31,35 +29,8 @@ spring:
       max-lifetime: 45000
       auto-commit: true
       pool-name: CouponHikariCP
-  redis:
-    database: 0
-    host: 127.0.0.1
-    port: 6379
-    # password:
-    timeout: 10000
 
 eureka:
   client:
     service-url:
       defaultZone: http://server1:8000/eureka/
-
-# ------------------------------------------------------------------------------------------------------
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-
-info:
-  app:
-    name: coupon-template
-    groupId: coupon-service
-    artifactId: coupon-template
-    version: 1.0-SNAPSHOT
-
-# ------------------------------------------------------------------------------------------------------
-
-logging:
-  level:
-    wlh.coupon: debug

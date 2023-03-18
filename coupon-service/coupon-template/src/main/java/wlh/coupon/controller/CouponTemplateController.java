@@ -1,6 +1,8 @@
 package wlh.coupon.controller;
 
 import com.alibaba.fastjson.JSON;
+import wlh.coupon.annotation.CouponPermission;
+import wlh.coupon.annotation.IgnorePermission;
 import wlh.coupon.entity.CouponTemplate;
 import wlh.coupon.exception.CouponException;
 import wlh.coupon.service.IBuildTemplateService;
@@ -41,6 +43,7 @@ public class CouponTemplateController {
      * 127.0.0.1:9000/coupon-microservice/coupon-template/template/build
      * */
     @PostMapping("/template/build")
+    @CouponPermission(description = "build coupon template", readOnly = false)
     public CouponTemplate buildTemplate(@RequestBody TemplateRequest request)
             throws CouponException {
         log.info("Build Template: {}", JSON.toJSONString(request));
@@ -54,6 +57,7 @@ public class CouponTemplateController {
      * 127.0.0.1:9000/coupon-microservice/coupon-template/template/info?id=1
      * */
     @GetMapping("/template/info")
+    @CouponPermission(description = "get template info")
     public CouponTemplate buildTemplateInfo(@RequestParam("id") Integer id)
             throws CouponException {
         log.info("Build Template Info For: {}", id);
@@ -66,6 +70,7 @@ public class CouponTemplateController {
      * 127.0.0.1:9000/coupon-microservice/coupon-template/template/sdk/all
      * */
     @GetMapping("/template/sdk/all")
+    @IgnorePermission
     public List<CouponTemplateSDK> findAllUsableTemplate() {
         log.info("Find All Usable Template.");
         return templateBaseService.findAllUsableTemplate();
